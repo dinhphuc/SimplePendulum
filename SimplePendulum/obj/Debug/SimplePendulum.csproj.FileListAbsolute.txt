@@ -6,3 +6,4 @@ c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePen
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.csproj.GenerateResource.Cache
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.exe
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.pdb
+C:\Users\PhucBinz\Documents\Visual Studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.csprojResolveAssemblyReference.cache

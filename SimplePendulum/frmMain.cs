@@ -28,8 +28,9 @@ namespace SimplePendulum
         private bool isRight;
         private void btnStart_Click(object sender, EventArgs e)
         {
+            hasForce = true;
             //init Data 
-            if ((hasForce && nudForceValue.Value != 0) || nudAlpha.Value != 0)
+            if ( nudForceValue.Value != 0)
             {
                 if (cmbDirection.SelectedItem.ToString() == "Left")
                 {
@@ -45,7 +46,6 @@ namespace SimplePendulum
                 timer1.Start();
                 btnStart.Enabled = false;
                 btnPause.Enabled = true;
-                ckbForce.Enabled = false;
             }
 
         }
@@ -68,18 +68,8 @@ namespace SimplePendulum
             btnPause.Enabled = false;
             btnStart.Enabled = true;
 
-            ckbForce.Enabled = true;
-            nudAlpha.Value = 0;
             cmbDirection.Text = "Right";
 
-            if (ckbForce.Checked)
-            {
-                hasForce = true;
-            }
-            else
-            {
-                hasForce = false;
-            }
             DrawPendulum();
         }
         private void DrawPendulum()
@@ -103,42 +93,9 @@ namespace SimplePendulum
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             if (startAnimation)
             {
                 startRunning();
-            }
-        }
-
-        private void ckbForce_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ckbForce.Checked)
-            {
-                hasForce = true;
-                nudAlpha.Value = 0;
-                pendulum.Alpha = 0;
-                DrawPendulum();
-                nudAlpha.Enabled = false;
-                grbForce.Visible = true;
-                btnStart.Location = new Point(53, 384);
-                btnPause.Location = new Point(53, 418);
-            }
-            else
-            {
-                hasForce = false;
-                nudAlpha.Enabled = true;
-                grbForce.Visible = false;
-                btnStart.Location = new Point(53, 384);
-                btnPause.Location = new Point(53, 418);
-            }
-        }
-
-        private void nudAlpha_ValueChanged(object sender, EventArgs e)
-        {
-            if (!hasForce)
-            {
-                pendulum.Alpha = (float)nudAlpha.Value * (float)Math.PI / 180;
-                DrawPendulum();
             }
         }
 
@@ -168,6 +125,7 @@ namespace SimplePendulum
             }
             else
             {
+                //Sau khi lực tac dụng
                 pendulum.aAcc = (float)(-0.01 * Math.Sin(pendulum.Alpha));
                 pendulum.Alpha += pendulum.aVel;
                 pendulum.aVel += pendulum.aAcc;

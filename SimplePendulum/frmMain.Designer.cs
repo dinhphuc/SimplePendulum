@@ -32,16 +32,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Paper = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ckbForce = new System.Windows.Forms.CheckBox();
-            this.grbForce = new System.Windows.Forms.GroupBox();
-            this.cmbDirection = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.nudForceValue = new System.Windows.Forms.NumericUpDown();
-            this.label11 = new System.Windows.Forms.Label();
-            this.nudAlpha = new System.Windows.Forms.NumericUpDown();
             this.nudM = new System.Windows.Forms.NumericUpDown();
             this.nudLenght = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
@@ -54,15 +46,17 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtAlphaNew = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cmbDirection = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nudForceValue = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Paper)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.grbForce.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAlpha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,12 +82,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ckbForce);
-            this.groupBox1.Controls.Add(this.grbForce);
-            this.groupBox1.Controls.Add(this.nudAlpha);
+            this.groupBox1.Controls.Add(this.cmbDirection);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.nudForceValue);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.nudM);
             this.groupBox1.Controls.Add(this.nudLenght);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
@@ -103,96 +97,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chỉ số";
-            // 
-            // ckbForce
-            // 
-            this.ckbForce.AutoSize = true;
-            this.ckbForce.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ckbForce.Location = new System.Drawing.Point(230, 12);
-            this.ckbForce.Name = "ckbForce";
-            this.ckbForce.Size = new System.Drawing.Size(88, 20);
-            this.ckbForce.TabIndex = 19;
-            this.ckbForce.Text = "Thêm lực :";
-            this.ckbForce.UseVisualStyleBackColor = true;
-            this.ckbForce.CheckedChanged += new System.EventHandler(this.ckbForce_CheckedChanged);
-            // 
-            // grbForce
-            // 
-            this.grbForce.Controls.Add(this.cmbDirection);
-            this.grbForce.Controls.Add(this.label10);
-            this.grbForce.Controls.Add(this.nudForceValue);
-            this.grbForce.Controls.Add(this.label11);
-            this.grbForce.Location = new System.Drawing.Point(230, 30);
-            this.grbForce.Name = "grbForce";
-            this.grbForce.Size = new System.Drawing.Size(173, 81);
-            this.grbForce.TabIndex = 18;
-            this.grbForce.TabStop = false;
-            this.grbForce.Visible = false;
-            // 
-            // cmbDirection
-            // 
-            this.cmbDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDirection.FormattingEnabled = true;
-            this.cmbDirection.Items.AddRange(new object[] {
-            "Left",
-            "Right"});
-            this.cmbDirection.Location = new System.Drawing.Point(74, 44);
-            this.cmbDirection.Name = "cmbDirection";
-            this.cmbDirection.Size = new System.Drawing.Size(67, 24);
-            this.cmbDirection.TabIndex = 11;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 47);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 16);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Hướng :";
-            // 
-            // nudForceValue
-            // 
-            this.nudForceValue.Location = new System.Drawing.Point(74, 18);
-            this.nudForceValue.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.nudForceValue.Name = "nudForceValue";
-            this.nudForceValue.Size = new System.Drawing.Size(67, 22);
-            this.nudForceValue.TabIndex = 9;
-            this.nudForceValue.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 21);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(55, 16);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "Độ lớn : ";
-            // 
-            // nudAlpha
-            // 
-            this.nudAlpha.Location = new System.Drawing.Point(136, 84);
-            this.nudAlpha.Maximum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            0});
-            this.nudAlpha.Minimum = new decimal(new int[] {
-            90,
-            0,
-            0,
-            -2147483648});
-            this.nudAlpha.Name = "nudAlpha";
-            this.nudAlpha.Size = new System.Drawing.Size(57, 22);
-            this.nudAlpha.TabIndex = 16;
-            this.nudAlpha.ValueChanged += new System.EventHandler(this.nudAlpha_ValueChanged);
             // 
             // nudM
             // 
@@ -237,16 +141,6 @@
             0,
             0,
             0});
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label3.Location = new System.Drawing.Point(6, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 16);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Góc";
             // 
             // label2
             // 
@@ -370,6 +264,53 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Alpha(α)";
             // 
+            // cmbDirection
+            // 
+            this.cmbDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDirection.FormattingEnabled = true;
+            this.cmbDirection.Items.AddRange(new object[] {
+            "Left",
+            "Right"});
+            this.cmbDirection.Location = new System.Drawing.Point(291, 51);
+            this.cmbDirection.Name = "cmbDirection";
+            this.cmbDirection.Size = new System.Drawing.Size(67, 24);
+            this.cmbDirection.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(226, 54);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 16);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Hướng :";
+            // 
+            // nudForceValue
+            // 
+            this.nudForceValue.Location = new System.Drawing.Point(291, 25);
+            this.nudForceValue.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.nudForceValue.Name = "nudForceValue";
+            this.nudForceValue.Size = new System.Drawing.Size(67, 22);
+            this.nudForceValue.TabIndex = 17;
+            this.nudForceValue.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(226, 28);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(55, 16);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Độ lớn : ";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,14 +331,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Paper)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.grbForce.ResumeLayout(false);
-            this.grbForce.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAlpha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -406,7 +344,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStart;
@@ -420,15 +357,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox ckbForce;
-        private System.Windows.Forms.GroupBox grbForce;
+        private System.Windows.Forms.NumericUpDown nudM;
+        private System.Windows.Forms.NumericUpDown nudLenght;
         private System.Windows.Forms.ComboBox cmbDirection;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown nudForceValue;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.NumericUpDown nudAlpha;
-        private System.Windows.Forms.NumericUpDown nudM;
-        private System.Windows.Forms.NumericUpDown nudLenght;
     }
 }
 
