@@ -1,7 +1,6 @@
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\bin\Debug\SimplePendulum.exe.config
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\bin\Debug\SimplePendulum.exe
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\bin\Debug\SimplePendulum.pdb
-c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.csprojResolveAssemblyReference.cache
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.frmMain.resources
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.Properties.Resources.resources
 c:\users\phucbinz\documents\visual studio 2015\Projects\SimplePendulum\SimplePendulum\obj\Debug\SimplePendulum.csproj.GenerateResource.Cache

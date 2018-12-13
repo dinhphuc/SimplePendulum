@@ -11,48 +11,41 @@ using System.Windows.Forms;
 
 namespace SimplePendulum
 {
+   
     public partial class frmMain : Form
     {
         int w, h;
-        Single vo, t;
         Single x, y;
-        double alpha;
         int k = 40;
-        double l;
-        float Omega;
-        float phi;
-        bool flag = false;
 
+        private Pendulum pendulum = new Pendulum();
 
+        private bool hasForce;
+        private bool startAnimation;
+
+        private float force;
+        //private float M;
+        private bool isRight;
         private void btnStart_Click(object sender, EventArgs e)
         {
             //init Data 
-
-            vo = float.Parse(txtVo.Text.Trim());
-            l = double.Parse(txtLength.Text.Trim());
-            Omega = (float)Math.Sqrt(9.8 / float.Parse(txtLength.Text));
-            phi = (float)Math.Atan(-vo / (alpha * l * Omega));
-            alpha = Math.PI * float.Parse(txtAlpa.Text) / 180;
-            x = w / 2 - (float)(l * Math.Sin(alpha));
-            y = k + (float)(l * Math.Cos(alpha));
-
-
-            btnPause.Enabled = true;
-            btnStart.Enabled = false;
-
-            flag = true;
-
-            //Cos(phi) = alpha/alpha0 < 1
-            //Sin(phi) = vo/alpha0 < l*Omega
-            //
-            if (vo / (float.Parse(txtAlpa.Text) * Math.PI / 180) < l * Omega)
+            if ((hasForce && nudForceValue.Value != 0) || nudAlpha.Value != 0)
             {
+                if (cmbDirection.SelectedItem.ToString() == "Left")
+                {
+                    isRight = false;
+                }
+                else
+                {
+                    isRight = true;
+                }
+                pendulum.M = (float)nudM.Value;
+                force = (float)nudForceValue.Value / 1000;
+                startAnimation = true;
                 timer1.Start();
-            }
-            else
-            {
-                timer1.Stop();
-                MessageBox.Show("Điều kiện ban đầu không hợp lệ!. Đề nghị kiểm tra lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                btnStart.Enabled = false;
+                btnPause.Enabled = true;
+                ckbForce.Enabled = false;
             }
 
         }
@@ -64,55 +57,136 @@ namespace SimplePendulum
             x = k;
             y = h - k;
             btnPause.Enabled = false;
-        }
 
+            pendulum.Alpha = 0;
+            pendulum.aVel = 0;
+            pendulum.aAcc = 0;
+
+            pendulum.origin = new Point(Paper.Width / 2, Paper.Height / 4);
+            pendulum.radius = 5;
+            pendulum.lenght = (int)nudLenght.Value;
+            btnPause.Enabled = false;
+            btnStart.Enabled = true;
+
+            ckbForce.Enabled = true;
+            nudAlpha.Value = 0;
+            cmbDirection.Text = "Right";
+
+            if (ckbForce.Checked)
+            {
+                hasForce = true;
+            }
+            else
+            {
+                hasForce = false;
+            }
+            DrawPendulum();
+        }
+        private void DrawPendulum()
+        {
+            //1. tạo một bitmap mới 
+            Bitmap bm = new Bitmap(Paper.Width, Paper.Height);
+            Graphics g = Graphics.FromImage(bm);
+
+            txtAlphaNew.Text = pendulum.Alpha.ToString();
+            lblX.Text = pendulum.ballPos.X.ToString();
+            lblY.Text = pendulum.ballPos.Y.ToString();
+            //2. xóa màn hình
+            g.Clear(Color.White);
+
+            //3. vẽ
+            pendulum.DrawPendulum(g);
+            Paper.Image = bm;
+
+            //4. dispose
+            g.Dispose();
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            t += float.Parse("0.1");
-            //Cập nhất lại alpha theo t
-            alpha = Math.PI * double.Parse(txtAlpa.Text.Trim()) * Math.Cos(Omega * t + phi) / 180;
 
-            //Dùng động năng xác định vị trí x,y
-            x = w / 2 - (float)(l * Math.Sin(alpha));
-            y = k + (float)(l * Math.Cos(alpha));
-            Paper.Invalidate();
-
-            txtAlphaNew.Text = alpha.ToString();
-            txtOmega.Text = Omega.ToString();
-            txtPi.Text = phi.ToString();
-            lblX.Text = x.ToString();
-            lblY.Text = y.ToString();
-            lblT.Text = t.ToString();
+            if (startAnimation)
+            {
+                startRunning();
+            }
         }
 
+        private void ckbForce_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbForce.Checked)
+            {
+                hasForce = true;
+                nudAlpha.Value = 0;
+                pendulum.Alpha = 0;
+                DrawPendulum();
+                nudAlpha.Enabled = false;
+                grbForce.Visible = true;
+                btnStart.Location = new Point(53, 384);
+                btnPause.Location = new Point(53, 418);
+            }
+            else
+            {
+                hasForce = false;
+                nudAlpha.Enabled = true;
+                grbForce.Visible = false;
+                btnStart.Location = new Point(53, 384);
+                btnPause.Location = new Point(53, 418);
+            }
+        }
+
+        private void nudAlpha_ValueChanged(object sender, EventArgs e)
+        {
+            if (!hasForce)
+            {
+                pendulum.Alpha = (float)nudAlpha.Value * (float)Math.PI / 180;
+                DrawPendulum();
+            }
+        }
+
+        private void startRunning()
+        {
+            if (hasForce)
+            {
+                //công thức gia tốc góc (acceleration)
+                pendulum.aAcc = (float)(force * Math.Cos(Math.Abs(pendulum.Alpha)) / pendulum.M)
+                    - (float)(0.01 * Math.Sin(Math.Abs(pendulum.Alpha)));
+
+                if (isRight == false)   //hướng lực là trái
+                {
+                    pendulum.Alpha -= pendulum.aVel;
+                }
+                else
+                {
+                    pendulum.Alpha += pendulum.aVel;      //hướng lực là phải
+                }
+                pendulum.aVel += pendulum.aAcc;
+
+                if (pendulum.aVel <= 0)
+                {
+                    hasForce = false;
+                    pendulum.aVel = 0;
+                }
+            }
+            else
+            {
+                pendulum.aAcc = (float)(-0.01 * Math.Sin(pendulum.Alpha));
+                pendulum.Alpha += pendulum.aVel;
+                pendulum.aVel += pendulum.aAcc;
+
+                //giảm xóc
+                pendulum.aVel *= 0.99f;
+            }
+
+            DrawPendulum();
+        }
         private void btnPause_Click(object sender, EventArgs e)
         {
             timer1.Stop();
-            btnStart.Enabled = true;
-            btnPause.Enabled = false;
+            frmMain_Load(sender, e);
         }
 
         public frmMain()
         {
             InitializeComponent();
-        }
-
-      
-        private void Paper_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            if (flag)
-            {
-                e.Graphics.DrawLine(Pens.Black, new Point(w / 2 - 50, k), new Point(w / 2 + 50, k));
-                e.Graphics.DrawLine(Pens.Black, new Point((int)x, (int)y), new Point(w / 2, k));
-                
-                e.Graphics.DrawLine(Pens.Black, new Point(w / 2, (int)l), new Point(w / 2, k));
-
-
-             //  e.Graphics.DrawEllipse(Pens.Blue, new RectangleF(x - 5, y - 5, 10, 10));
-               e.Graphics.FillEllipse(Brushes.Blue, new RectangleF(x - 5, y - 5, 10, 10));
-            }
-           
-        }
+        }        
     }
 }

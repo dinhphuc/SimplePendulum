@@ -32,9 +32,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Paper = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtVo = new System.Windows.Forms.TextBox();
-            this.txtLength = new System.Windows.Forms.TextBox();
-            this.txtAlpa = new System.Windows.Forms.TextBox();
+            this.ckbForce = new System.Windows.Forms.CheckBox();
+            this.grbForce = new System.Windows.Forms.GroupBox();
+            this.cmbDirection = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.nudForceValue = new System.Windows.Forms.NumericUpDown();
+            this.label11 = new System.Windows.Forms.Label();
+            this.nudAlpha = new System.Windows.Forms.NumericUpDown();
+            this.nudM = new System.Windows.Forms.NumericUpDown();
+            this.nudLenght = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,21 +48,20 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnPause = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtOmega = new System.Windows.Forms.TextBox();
-            this.txtAlphaNew = new System.Windows.Forms.TextBox();
-            this.txtPi = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblX = new System.Windows.Forms.Label();
-            this.lblY = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblT = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtAlphaNew = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Paper)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.grbForce.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAlpha)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,66 +85,174 @@
             this.Paper.Size = new System.Drawing.Size(905, 343);
             this.Paper.TabIndex = 0;
             this.Paper.TabStop = false;
-            this.Paper.Paint += new System.Windows.Forms.PaintEventHandler(this.Paper_Paint);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtVo);
-            this.groupBox1.Controls.Add(this.txtLength);
-            this.groupBox1.Controls.Add(this.txtAlpa);
+            this.groupBox1.Controls.Add(this.ckbForce);
+            this.groupBox1.Controls.Add(this.grbForce);
+            this.groupBox1.Controls.Add(this.nudAlpha);
+            this.groupBox1.Controls.Add(this.nudM);
+            this.groupBox1.Controls.Add(this.nudLenght);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.groupBox1.Location = new System.Drawing.Point(234, 361);
+            this.groupBox1.Location = new System.Drawing.Point(174, 361);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 117);
+            this.groupBox1.Size = new System.Drawing.Size(409, 117);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chỉ số";
             // 
-            // txtVo
+            // ckbForce
             // 
-            this.txtVo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtVo.Location = new System.Drawing.Point(209, 78);
-            this.txtVo.Name = "txtVo";
-            this.txtVo.Size = new System.Drawing.Size(100, 22);
-            this.txtVo.TabIndex = 1;
-            this.txtVo.Text = "5";
+            this.ckbForce.AutoSize = true;
+            this.ckbForce.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ckbForce.Location = new System.Drawing.Point(230, 12);
+            this.ckbForce.Name = "ckbForce";
+            this.ckbForce.Size = new System.Drawing.Size(88, 20);
+            this.ckbForce.TabIndex = 19;
+            this.ckbForce.Text = "Thêm lực :";
+            this.ckbForce.UseVisualStyleBackColor = true;
+            this.ckbForce.CheckedChanged += new System.EventHandler(this.ckbForce_CheckedChanged);
             // 
-            // txtLength
+            // grbForce
             // 
-            this.txtLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtLength.Location = new System.Drawing.Point(209, 52);
-            this.txtLength.Name = "txtLength";
-            this.txtLength.Size = new System.Drawing.Size(100, 22);
-            this.txtLength.TabIndex = 1;
-            this.txtLength.Text = "200";
+            this.grbForce.Controls.Add(this.cmbDirection);
+            this.grbForce.Controls.Add(this.label10);
+            this.grbForce.Controls.Add(this.nudForceValue);
+            this.grbForce.Controls.Add(this.label11);
+            this.grbForce.Location = new System.Drawing.Point(230, 30);
+            this.grbForce.Name = "grbForce";
+            this.grbForce.Size = new System.Drawing.Size(173, 81);
+            this.grbForce.TabIndex = 18;
+            this.grbForce.TabStop = false;
+            this.grbForce.Visible = false;
             // 
-            // txtAlpa
+            // cmbDirection
             // 
-            this.txtAlpa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtAlpa.Location = new System.Drawing.Point(209, 26);
-            this.txtAlpa.Name = "txtAlpa";
-            this.txtAlpa.Size = new System.Drawing.Size(100, 22);
-            this.txtAlpa.TabIndex = 1;
-            this.txtAlpa.Text = "70";
+            this.cmbDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDirection.FormattingEnabled = true;
+            this.cmbDirection.Items.AddRange(new object[] {
+            "Left",
+            "Right"});
+            this.cmbDirection.Location = new System.Drawing.Point(74, 44);
+            this.cmbDirection.Name = "cmbDirection";
+            this.cmbDirection.Size = new System.Drawing.Size(67, 24);
+            this.cmbDirection.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(9, 47);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 16);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Hướng :";
+            // 
+            // nudForceValue
+            // 
+            this.nudForceValue.Location = new System.Drawing.Point(74, 18);
+            this.nudForceValue.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.nudForceValue.Name = "nudForceValue";
+            this.nudForceValue.Size = new System.Drawing.Size(67, 22);
+            this.nudForceValue.TabIndex = 9;
+            this.nudForceValue.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(55, 16);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "Độ lớn : ";
+            // 
+            // nudAlpha
+            // 
+            this.nudAlpha.Location = new System.Drawing.Point(136, 84);
+            this.nudAlpha.Maximum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            0});
+            this.nudAlpha.Minimum = new decimal(new int[] {
+            90,
+            0,
+            0,
+            -2147483648});
+            this.nudAlpha.Name = "nudAlpha";
+            this.nudAlpha.Size = new System.Drawing.Size(57, 22);
+            this.nudAlpha.TabIndex = 16;
+            this.nudAlpha.ValueChanged += new System.EventHandler(this.nudAlpha_ValueChanged);
+            // 
+            // nudM
+            // 
+            this.nudM.Location = new System.Drawing.Point(136, 24);
+            this.nudM.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudM.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudM.Name = "nudM";
+            this.nudM.Size = new System.Drawing.Size(57, 22);
+            this.nudM.TabIndex = 15;
+            this.nudM.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // nudLenght
+            // 
+            this.nudLenght.Location = new System.Drawing.Point(136, 53);
+            this.nudLenght.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nudLenght.Minimum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            this.nudLenght.Name = "nudLenght";
+            this.nudLenght.Size = new System.Drawing.Size(57, 22);
+            this.nudLenght.TabIndex = 3;
+            this.nudLenght.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label3.Location = new System.Drawing.Point(37, 80);
+            this.label3.Location = new System.Drawing.Point(6, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 16);
+            this.label3.Size = new System.Drawing.Size(33, 16);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Vận tốc ban đầu (Vo)";
+            this.label3.Text = "Góc";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label2.Location = new System.Drawing.Point(37, 55);
+            this.label2.Location = new System.Drawing.Point(6, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 16);
             this.label2.TabIndex = 0;
@@ -149,16 +262,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label1.Location = new System.Drawing.Point(37, 30);
+            this.label1.Location = new System.Drawing.Point(6, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 16);
+            this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Góc ban đầu (α)";
+            this.label1.Text = "Khối lượng";
             // 
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnStart.Location = new System.Drawing.Point(46, 392);
+            this.btnStart.Location = new System.Drawing.Point(53, 384);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 2;
@@ -174,7 +287,7 @@
             // btnPause
             // 
             this.btnPause.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnPause.Location = new System.Drawing.Point(141, 392);
+            this.btnPause.Location = new System.Drawing.Point(53, 418);
             this.btnPause.Name = "btnPause";
             this.btnPause.Size = new System.Drawing.Size(75, 23);
             this.btnPause.TabIndex = 2;
@@ -185,17 +298,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblY);
-            this.groupBox2.Controls.Add(this.lblT);
-            this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.lblX);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtOmega);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtAlphaNew);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtPi);
-            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Location = new System.Drawing.Point(589, 361);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(328, 117);
@@ -203,75 +310,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Giá trị";
             // 
-            // label4
+            // lblY
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label4.Location = new System.Drawing.Point(6, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Omega (ω)";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label5.Location = new System.Drawing.Point(6, 55);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 16);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Alpha(α)";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label6.Location = new System.Drawing.Point(6, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Pi (π)";
-            // 
-            // txtOmega
-            // 
-            this.txtOmega.Enabled = false;
-            this.txtOmega.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtOmega.Location = new System.Drawing.Point(83, 81);
-            this.txtOmega.Name = "txtOmega";
-            this.txtOmega.Size = new System.Drawing.Size(132, 22);
-            this.txtOmega.TabIndex = 2;
-            this.txtOmega.Text = "0";
-            // 
-            // txtAlphaNew
-            // 
-            this.txtAlphaNew.Enabled = false;
-            this.txtAlphaNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtAlphaNew.Location = new System.Drawing.Point(83, 55);
-            this.txtAlphaNew.Name = "txtAlphaNew";
-            this.txtAlphaNew.Size = new System.Drawing.Size(132, 22);
-            this.txtAlphaNew.TabIndex = 3;
-            this.txtAlphaNew.Text = "0";
-            // 
-            // txtPi
-            // 
-            this.txtPi.Enabled = false;
-            this.txtPi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.txtPi.Location = new System.Drawing.Point(83, 29);
-            this.txtPi.Name = "txtPi";
-            this.txtPi.Size = new System.Drawing.Size(132, 22);
-            this.txtPi.TabIndex = 4;
-            this.txtPi.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label7.Location = new System.Drawing.Point(221, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 16);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "(x) :";
+            this.lblY.AutoSize = true;
+            this.lblY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.lblY.ForeColor = System.Drawing.Color.Blue;
+            this.lblY.Location = new System.Drawing.Point(250, 59);
+            this.lblY.Name = "lblY";
+            this.lblY.Size = new System.Drawing.Size(0, 16);
+            this.lblY.TabIndex = 5;
             // 
             // label8
             // 
@@ -293,35 +340,35 @@
             this.lblX.Size = new System.Drawing.Size(0, 16);
             this.lblX.TabIndex = 5;
             // 
-            // lblY
+            // label7
             // 
-            this.lblY.AutoSize = true;
-            this.lblY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblY.ForeColor = System.Drawing.Color.Blue;
-            this.lblY.Location = new System.Drawing.Point(250, 59);
-            this.lblY.Name = "lblY";
-            this.lblY.Size = new System.Drawing.Size(0, 16);
-            this.lblY.TabIndex = 5;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label7.Location = new System.Drawing.Point(221, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 16);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "(x) :";
             // 
-            // label9
+            // txtAlphaNew
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.label9.Location = new System.Drawing.Point(224, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 16);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "(t) : ";
+            this.txtAlphaNew.Enabled = false;
+            this.txtAlphaNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.txtAlphaNew.Location = new System.Drawing.Point(83, 32);
+            this.txtAlphaNew.Name = "txtAlphaNew";
+            this.txtAlphaNew.Size = new System.Drawing.Size(132, 22);
+            this.txtAlphaNew.TabIndex = 3;
+            this.txtAlphaNew.Text = "0";
             // 
-            // lblT
+            // label5
             // 
-            this.lblT.AutoSize = true;
-            this.lblT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.lblT.ForeColor = System.Drawing.Color.Blue;
-            this.lblT.Location = new System.Drawing.Point(253, 86);
-            this.lblT.Name = "lblT";
-            this.lblT.Size = new System.Drawing.Size(0, 16);
-            this.lblT.TabIndex = 5;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.label5.Location = new System.Drawing.Point(6, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 16);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "Alpha(α)";
             // 
             // frmMain
             // 
@@ -343,6 +390,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Paper)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.grbForce.ResumeLayout(false);
+            this.grbForce.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudForceValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudAlpha)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLenght)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -353,9 +406,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtVo;
-        private System.Windows.Forms.TextBox txtLength;
-        private System.Windows.Forms.TextBox txtAlpa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -364,18 +414,21 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtOmega;
         private System.Windows.Forms.TextBox txtAlphaNew;
-        private System.Windows.Forms.TextBox txtPi;
         private System.Windows.Forms.Label lblY;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblX;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblT;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox ckbForce;
+        private System.Windows.Forms.GroupBox grbForce;
+        private System.Windows.Forms.ComboBox cmbDirection;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown nudForceValue;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NumericUpDown nudAlpha;
+        private System.Windows.Forms.NumericUpDown nudM;
+        private System.Windows.Forms.NumericUpDown nudLenght;
     }
 }
 
